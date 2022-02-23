@@ -1,0 +1,59 @@
+{
+  "name": "@marp-team/marp",
+  "description": "The entrance repository of Markdown presentation ecosystem",
+  "private": true,
+  "license": "MIT",
+  "author": {
+    "name": "Marp team",
+    "url": "https://github.com/marp-team"
+  },
+  "contributors": [
+    {
+      "name": "Yuki Hattori",
+      "url": "https://github.com/yhatt"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/marp-team/marp"
+  },
+  "workspaces": [
+    "packages/*",
+    "website"
+  ],
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "scripts": {
+    "deck": "marp --no-stdin PITCHME.md -o dist/index.html && cpx \"assets/**/*\" dist/assets",
+    "now-build": "npm run -s deck",
+    "og-image": "marp PITCHME.md -o dist/og-image.jpg",
+    "start": "marp -ps .",
+    "check:format": "yarn -s format -c",
+    "check:ts": "lerna run --parallel check:ts",
+    "format:write": "yarn -s format --write",
+    "format": "prettier \"**/*.{css,js,jsx,json,md,mdx,scss,ts,tsx,yaml,yml}\"",
+    "lint:js": "eslint --ext .js,.jsx,.ts,.tsx --report-unused-disable-directives --cache .",
+    "website": "yarn workspace @marp-team/marp-website dev",
+    "build": "rimraf dist && npm run -s og-image && npm run -s deck"
+   
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^1.6.0",
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/node": "^14.14.7",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
+    "eslint": "^7.13.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-import-resolver-typescript": "^2.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "lerna": "^3.22.1",
+    "prettier": "^2.1.2",
+    "typescript": "~4.0.5"
+  },
+  "resolutions": {
+    "webpack": "^5.0.0"
+  }
+}
