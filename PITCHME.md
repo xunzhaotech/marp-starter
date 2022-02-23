@@ -1,15 +1,27 @@
 ---
 theme: gaia
-_class: lead
+class: lead
 paginate: true
 backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.svg')
 footer: 前端管理部 2022-02-24 
+style: |
+  :root {
+    --color-background: #ddd;
+    --color-background-code: #ccc;
+    --color-background-paginate: rgba(128, 128, 128, 0.05);
+    --color-foreground: #345;
+    --color-highlight: #99c;
+    --color-highlight-hover: #aaf;
+    --color-highlight-heading: #99c;
+    --color-header: #bbb;
+    --color-header-shadow: transparent;
+  }
 ---
 
 ![bg left:40% 80%](https://marp.app/assets/marp.svg)
 
-# **端技术培训**
+# **端端技术培训**
 ---
 #### 课程说明
 ![bg left:40% 90%](https://marp.app/assets/marp.svg)
