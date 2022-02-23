@@ -31,8 +31,7 @@ footer: 前端管理部 2022-02-24
 
 
 ---
-###### H6
----
+#### 第一节 前端概述
 ```markdown
 Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
 # Slide 1
@@ -45,14 +44,9 @@ foobar
 
 foobar
 ```
-Alternatively, for H1 and H2, an underline-ish style:
+--- 
+#### 第二节 VueJS介绍(开发规范)
 
-Alt-H1
-======
-
-Alt-H2
-------
----
 1. First ordered list item
 2. Another item
 ⋅⋅* Unordered sub-list.
@@ -60,13 +54,24 @@ Alt-H2
 ⋅⋅1. Ordered sub-list
 4. And another item.
 ---
+#### 第三节 Vue事件讲解
 ⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
+
 ---
+#### 第四节 VueRouter讲解
 ⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
 ⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
 ⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
+
 ---
+#### 第五节 Vuex讲解
 * Unordered list can use asterisks
 - Or minuses
 + Or pluses
+---
+#### 第六节 Vue中8种组件通信方式
+---
+#### 第七节 Vue+ElementUI实现系统增、删、查、改
+---
+#### 第八节 培训测评
 ---
