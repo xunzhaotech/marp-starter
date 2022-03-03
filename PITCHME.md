@@ -4,7 +4,7 @@ class: lead
 paginate: true
 backgroundColor: #fff
 backgroundImage: url('https://marp.app/assets/hero-background.svg')
-footer: 前端管理部 2022-02-24 
+footer: 前端管理部 2022-03-03 
 style: |
   :root {
     --color-background: red;
@@ -19,21 +19,19 @@ style: |
   }
 ---
 # **端端技术培训**
-前端网:http://eui.ak1ak1.net
-工具链接：https://pan.baidu.com/s/1iBtnXSLahWIUGRMr2xfFIw 
-提取码：dyko
 ![bg left:50% 50%](./website/public/assets/logo.svg)
 
 ---
-#### 课程说明
+## 课程说明
 ![bg left:45% 45%](./website/public/assets/logo.svg)
-- 课程内容: NodeJS+VueJS+ElementUI
+- 课程内容: 
+NodeJS+VueJS(全家桶)+ElementUI
 - 课程节数:共8节
 - 面向对象:面向所有开发人员
 - 培训方式:PPT+支持线上线下
 - 学习方式:理论+实践+作业+考试
 ---
-#### 目录
+## 目录
 ![bg left:45% 45%](./website/public/assets/logo.svg)
 - 第一节 前端概述
 - 第二节 VueJS介绍(开发规范)
@@ -44,10 +42,70 @@ style: |
 - 第七节 Vue+ElementUI实现系统增、删、查、改
 - 第八节 培训测评
 ---
-#### 第一节 前端概述
+## 第一节 前端概述
+---
+### 1.1 前端常用地址
+- 前端网:http://eui.ak1ak1.net
+- 工具：https://pan.baidu.com/s/1iBtnXSLahWIUGRMr2xfFIw 
+- 提取码：dyko
+- [vuejs](https://vuejs.org)
+- [vue-router](https://router.vuejs.org)
+- [vuex](https://vuex.vuejs.org)
+- [vue-devtools](https://github.com/vuejs/vue-devtools#vue-devtools)
+- [vue-loader](https://vue-loader.vuejs.org)
+- [awesome-vue](https://github.com/vuejs/awesome-vue)
+---
+### 1.2 前端包含内容
+- HTML+JAVASCRIPT+CSS
+- Javascript(BOM+ECMSCRIPT+DOM)
+- CSS(less+scss+sass+stylus)
+- Angular+React+Vue
+- Webpack+Rollup+Gulp+Grunt
+- ElementUI+AntDesign+iview
+---
+## 第二节 VueJS介绍(开发规范)
 
 ---
-#### 1.1 前端包含内容
+### 2.1 Vue版本
+| Vue-cli版本 | Vue版本 |
+| :---------: | :-----: |
+| `npm install vue-cli -g`         |  V1.x   |
+| `npm install vue-cli -g`        |  v2.x   |
+| `npm install -g @vue/cli`        |  v3.x   |
+
+---
+### 2.2 Vue生命周期
+| Vue1.x | Vue2.x        |     Vue3.x      | 说明                                                         |
+| :----: | :------------ | :-------------: | :----------------------------------------------------------- |
+|        | beforeCreate  |     setup()     | 在实例初始化之后，数据观测 (data observer) 和 event/watcher 事件配置之前执行，此时组件实例还未创建，通常用于**插件开发中执行一些初始化任务**。 |
+|        | created       |     setup()     | 组件实例已经创建完成，并配置了数据观测 (data observer)，property 和方法的运算，watch/event 事件回调。但是还没有挂载DOM，此阶段可用于异步数据获取。 |
+
+---
+### 2.2 Vue生命周期
+| Vue1.x | Vue2.x        |     Vue3.x      | 说明                                                         |
+| :----: | :------------ | :-------------: | :----------------------------------------------------------- |
+|        | beforeMount   |                 | 在挂载开始之前被调用：相关的 render 函数首次被调用。         |
+|        | mounted       |    onMounted    | 组件实例被挂载后完成，DOM已创建，此阶段可用于访问数据和DOM元素，但不会保证所有子组件都一起被挂载。如果您希望整个视图都完成渲染可以在 mounted 内部使用 vm.$nextTick |
+
+---
+### 2.2 Vue生命周期
+| Vue1.x | Vue2.x        |     Vue3.x      | 说明                                                         |
+| :----: | :------------ | :-------------: | :----------------------------------------------------------- |
+|        | beforeUpdate  | onBeforeUpdate  | 数据更新前调用，可用于获取更新前的状态。可在这里 手动移除已经添加的事件监听器。 |
+|        | updated       |    onUpdated    | 此函数执行的时候。DOM已经更新( updated 不会保证所有的子组件也都一起被重绘。如果你希望等到整个视图都重绘完毕，可以在 updated 里使用 vm.$nextTick ) |
+
+---
+### 2.2 Vue生命周期
+| Vue1.x | Vue2.x        |     Vue3.x      | 说明                                                         |
+| :----: | :------------ | :-------------: | :----------------------------------------------------------- |
+|        | beforeDestroy | onBeforeUnmount | 实例销毁之前调用。在这一步，实例仍然完全可用，此时可以取消定时器和订阅事件。 |
+|        | destroyed     |   onUnmounted   |                                                              |
+|        | errorCaptured | onErrorCaptured |                                                              |
+
+- 两个被替换了，其余的就是改了个名 
+- 除了beforeCreate、created外其他生命周期钩子函数在服务器端渲染期间均不被调用。
+---
+### 2.3 前端文档地址
 ```markdown
 Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
 # Slide 1
@@ -60,33 +118,8 @@ foobar
 
 foobar
 ```
-
 ---
-#### 1.2 前端文档地址
-![bg left:40% 40%](./website/public/assets/logo.svg)
-  - [vuejs](https://vuejs.org)
-  - [vue-router](https://router.vuejs.org)
-  - [vuex](https://vuex.vuejs.org)
-  - [vue-devtools](https://github.com/vuejs/vue-devtools#vue-devtools)
-  - [vue-loader](https://vue-loader.vuejs.org)
-  - [awesome-vue](https://github.com/vuejs/awesome-vue)
-
----
-#### 第二节 VueJS介绍(开发规范)
-```markdown
-Split pages by horizontal ruler (`---`). It's very simple! :satisfied:
-# Slide 1
-
-foobar
-
----
-
-# Slide 2
-
-foobar
-```
----
-#### 3.1 事件语法定义
+### 3.1 事件语法定义
 - 概念
 ```markdown
 语法:在 vue 中，事件通过指令 v-on 进行绑定，v-on 缩写 @
@@ -97,7 +130,7 @@ foobar
 ```vue
 ```
 ---
-#### 3.2事件修饰符
+### 3.2事件修饰符
 在事件函数中，我们可以通过 e.preventDefault()、e.stopPropagation() 来阻止默认行为，阻止冒泡，但是中 <u>vue</u> 中提供一些更加方便的方式来处理这些问题，这就是事件修饰符。
 ```markdown
 .stop
@@ -111,7 +144,7 @@ foobar
 ```vue
 ```
 ---
-#### 3.3 按键修饰符
+### 3.3 按键修饰符
 vue 还提供了许多按键修饰符,用.keyCode。
 ```markdown
 <组件 @keyup.13="fn" />
@@ -123,7 +156,7 @@ vue 还提供了许多按键修饰符,用.keyCode。
 ```vue
 ```
 ---
-#### 3.4 原生事件
+### 3.4 原生事件
 自定义组件中可以自定义一些事件，可以通过 .native 修饰符来指定监听原生中的事件，而不是组件自定义事件.
 ```markdown
 <组件 @keyup.13="fn" />
@@ -135,23 +168,23 @@ vue 还提供了许多按键修饰符,用.keyCode。
 ```vue
 ```
 ---
-#### 第四节 VueRouter讲解
+## 第四节 VueRouter讲解
 ⋅⋅⋅To have a line break without a paragraph, you will need to use two trailing spaces.⋅⋅
 ⋅⋅⋅Note that this line is separate, but within the same paragraph.⋅⋅
 ⋅⋅⋅(This is contrary to the typical GFM line break behaviour, where trailing spaces are not required.)
 ⋅⋅⋅You can have properly indented paragraphs within list items. Notice the blank line above, and the leading spaces (at least one, but we'll use three here to also align the raw Markdown).
 
 ---
-#### 第五节 Vuex讲解
+## 第五节 Vuex讲解
 * Unordered list can use asterisks
 - Or minuses
 + Or pluses
 ---
-#### 第六节 Vue中8种组件通信方式
+## 第六节 Vue中8种组件通信方式
 ---
-#### 第七节 Vue+ElementUI实现系统增、删、查、改
+## 第七节 Vue+ElementUI实现系统增、删、查、改
 ---
-#### 第八节 培训测评
+## 第八节 培训测评
 ---
 1. First ordered list item
 2. Another item
