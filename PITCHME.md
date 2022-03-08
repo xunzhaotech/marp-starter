@@ -169,54 +169,147 @@ v-once关联的实例，只会渲染一次。之后的重新渲染，实例极�
 上面的例子中，msg,list即使产生改变，也不会重新渲染。
 ```
 ---
-### 3.5 v-once
-- 概念
+### 指令 3.6 v-if
+v-if可以实现条件渲染，Vue会根据表达式的值的真假条件来渲染元素。
 ```markdown
+# 语法
+<<a v-if="isStatus">yes</a>
+
+# 说明：
+如果属性值ok为true，则显示。否则，不会渲染这个元素。
+```
+---
+### 指令 3.7 v-else
+-else是搭配v-if使用的，它必须紧跟在v-if或者v-else-if后面，否则不起作用。
+```markdown
+# 语法
+<a v-if="isStatus">yes</a>
+<a v-else>No</a>
+
+# 说明：
+如果属性值ok为true，则显示。否则，不会渲染这个元素。
+```
+---
+### 指令 3.8 v-else-if
+v-else-if充当v-if的else-if块，可以链式的使用多次。可以更加方便的实现switch语句。
+```markdown
+# 语法
+<div v-if="type==='A'">A</div>
+<div v-else-if="type==='B'">B</div>
+<div v-else-if="type==='C'">C</div>
+<div v-else>Not A,B,C</div>
+
+# 说明：
+如果属性值ok为true，则显示。否则，不会渲染这个元素。
+```
+---
+### 指令 3.9 v-show
+v-else-if充当v-if的else-if块，可以链式的使用多次。可以更加方便的实现switch语句。
+```markdown
+# 语法
+<h1 v-show="ok">hello world</h1>
+
+# 说明：
+也是用于根据条件展示元素。和v-if不同的是，如果v-if的值是false，则这个元素被销毁，不在dom中。但是v-show的元素会始终被渲染并保存在dom中，它只是简单的切换css的dispaly属性。
+
+# 注意:
+v-if有更高的切换开销
+v-show有更高的初始渲染开销。
+因此，如果要非常频繁的切换，则使用v-show较好；如果在运行时条件不太可能改变，则v-if较好
+
+```
+---
+### 指令 3.10 v-for
+用v-for指令根据遍历数组来进行渲染
+```markdown
+# 语法
+<div v-for="(item,index) in items"></div>   //使用in，index是一个可选参数，表示当前项的索引
+<div v-for="item of items"></div>   //使用of
+
+# 注意:
+当v-for和v-if同处于一个节点时，v-for的优先级比v-if更高。这意味着v-if将运行在每个v-for循环中
+
+```
+---
+## 指令 3.11 v-bind
+v-bind用来动态的绑定一个或者多个特性。没有参数时，可以绑定到一个包含键值对的对象。常用于动态绑定class和style。以及href等。简写为一个冒号【 ：】
+```markdown
+# 语法
+# 对象语法
+<div :class="{'is-active':isActive, 'text-danger':hasError}"></div>//  data: {isActive: true,   hasError: false}
+
+# 数组语法
+
+<p :class="[{'is-active':activeClass},errorClass]">12345</p>//data: {activeClass: false,errorClass: 'text-danger'}
+
+# 直接绑定数据对象
+<div :class="classObject">12345</div> // data: {classObject:{'is-active': false,'text-danger':true}}
+```
+---
+## 指令 3.12 v-model
+v-model会忽略所有表单元素的value、checked、selected特性的初始值。因为它选择Vue实例数据做为具体的值。
+```markdown
+# 语法
+<input v-model="somebody">
+# v-model修饰符
+<1> .lazy 默认情况下，v-model同步输入框的值和数据。可以通过这个修饰符，转变为在change事件再同步。<input v-model.lazy="msg"> 
+<2> .number 自动将用户的输入值转化为数值类型 <input v-model.number="msg">
+<3> .trim 自动过滤用户输入的首尾空格 <input v-model.trim="msg">
+```
+
+
+---
+## 3.13 v-on
+
+```markdown
+# 概念
+v-on主要用来监听dom事件，以便执行一些代码块。表达式可以是一个方法名。
 语法:在 vue 中，事件通过指令 v-on 进行绑定，v-on 缩写 @
 <组件 v-on:事件名称="表达式" />
 <组件 @事件名称="表达式" />
-```
-- 案例
-```vue
-```
----
-### 3.6 v-if
-- 概念
-```markdown
-语法:在 vue 中，事件通过指令 v-on 进行绑定，v-on 缩写 @
-<组件 v-on:事件名称="表达式" />
-<组件 @事件名称="表达式" />
-```
-- 案例
-```vue
+# 案例
+<div id="app">
+    <button @click="consoleLog"></button>
+    <button v-on:click="consoleLog"></button>
+</div>
 ```
 ---
-### 3.1 事件语法定义
-- 概念
-```markdown
-语法:在 vue 中，事件通过指令 v-on 进行绑定，v-on 缩写 @
-<组件 v-on:事件名称="表达式" />
-<组件 @事件名称="表达式" />
-```
-- 案例
-```vue
-```
----
-### 3.2事件修饰符
+### 3.13.1 事件修饰符
 在事件函数中，我们可以通过 e.preventDefault()、e.stopPropagation() 来阻止默认行为，阻止冒泡，但是中 <u>vue</u> 中提供一些更加方便的方式来处理这些问题，这就是事件修饰符。
 ```markdown
-.stop
-.prevent
-.capture
-.self
-.once
-.passive
-```
-- 案例
-```vue
+.stop 阻止事件继续传播
+.prevent 事件不再重载页面
+.capture 使用事件捕获模式,即元素自身触发的事件先在此处处理，然后才交由内部元素进行处理
+.self 只当在 event.target 是当前元素自身时触发处理函数
+.once 事件将只会触发一次
+.passive 告诉浏览器你不想阻止事件的默认行为
 ```
 ---
-### 3.3 按键修饰符
+### 案例
+```markdown
+<!-- 阻止单击事件继续传播 -->
+<a v-on:click.stop="doThis"></a>
+<!-- 提交事件不再重载页面 -->
+<form v-on:submit.prevent="onSubmit"></form>
+<!-- 修饰符可以串联 -->
+<a v-on:click.stop.prevent="doThat"></a>
+<!-- 只有修饰符 -->
+<form v-on:submit.prevent></form>
+<!-- 添加事件监听器时使用事件捕获模式 -->
+<!-- 即元素自身触发的事件先在此处处理，然后才交由内部元素进行处理 -->
+<div v-on:click.capture="doThis">...</div>
+<!-- 只当在 event.target 是当前元素自身时触发处理函数 -->
+<!-- 即事件不是从内部元素触发的 -->
+<div v-on:click.self="doThat">...</div>
+<!-- 点击事件将只会触发一次 -->
+<a v-on:click.once="doThis"></a>
+<!-- 滚动事件的默认行为 (即滚动行为) 将会立即触发 -->
+<!-- 而不会等待 `onScroll` 完成  -->
+<!-- 这其中包含 `event.preventDefault()` 的情况 -->
+<div v-on:scroll.passive="onScroll">...</div>
+```
+---
+### 3.13.2  按键修饰符
 vue 还提供了许多按键修饰符,用.keyCode。
 ```markdown
 <组件 @keyup.13="fn" />
@@ -224,20 +317,14 @@ vue 还提供了许多按键修饰符,用.keyCode。
 .down
 .exact
 ```
-- 案例
-```vue
-```
 ---
-### 3.4 原生事件
+### 3.13.3  原生事件
 自定义组件中可以自定义一些事件，可以通过 .native 修饰符来指定监听原生中的事件，而不是组件自定义事件.
 ```markdown
 <组件 @keyup.13="fn" />
 .enter
 .down
 .exact
-```
-- 案例
-```vue
 ```
 ---
 ## 第四节 VueRouter讲解
